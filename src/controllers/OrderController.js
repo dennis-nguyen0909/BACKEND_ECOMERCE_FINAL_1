@@ -182,7 +182,19 @@ const confirmOrder = async (req, res) => {
     if (!orderId) {
       return res.status(404).json({
         status: "Error",
-        message: "Khong co id",
+        message: "Id là bắt buộc",
+      });
+    }
+    if (!statusOr) {
+      return res.status(404).json({
+        status: "Error",
+        message: "statusOr là bắt buộc",
+      });
+    }
+    if (!statusDelivery) {
+      return res.status(404).json({
+        status: "Error",
+        message: "statusDelivered là bắt buộc",
       });
     }
     const response = await OrderService.confirmOrder(
