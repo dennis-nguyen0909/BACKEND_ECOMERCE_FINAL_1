@@ -11,7 +11,7 @@ const OrderRouter = (app) => {
     OrderController.getAllOrderDetailsByMonth
   );
   router.post("/create", OrderController.createOrder);
-
+  router.get("/get-all-order", OrderController.getAllOder);
   return app.use("/api/order", router);
 };
 
