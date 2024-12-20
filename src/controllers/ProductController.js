@@ -132,7 +132,45 @@ const getAllProduct2 = async (req, res) => {
     });
   }
 };
-
+const deleteManyProduct = async (req, res) => {
+  try {
+    const ids = req.body.ids;
+    if (!ids) {
+      return res.status(404).json({
+        status: "Error",
+        message: "Vui long chon product",
+      });
+    }
+    const response = await ProductService.deleteManyProduct(ids);
+    return res.status(200).json(response);
+  } catch (error) {
+    return res.status(404).json({
+      status: "Error",
+      message: "Loi tu services",
+      error,
+    });
+  }
+};
+const deleteManyProduct = (ids) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      await Product.deleteMany({
+        _id: { $in: ids },
+      });
+      resolve({
+        status: "Ok",
+        EC: 1,
+        Message: "Delete Success",
+      });
+    } catch (error) {
+      resolve({
+        status: "Error",
+        EC: 0,
+        Message: "Delete Error",
+      });
+    }
+  });
+};
 module.exports = {
   createProduct,
   updateProduct,
@@ -140,4 +178,5 @@ module.exports = {
   getDetailProduct,
   getAllProduct,
   getAllProduct2,
+  deleteManyProduct,
 };
