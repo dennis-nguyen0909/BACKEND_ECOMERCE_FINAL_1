@@ -147,6 +147,12 @@ const cancelOrderProduct = async (req, res) => {
   try {
     const id = req.params.id;
     const data = req.body;
+    if (!id) {
+      return res.status(200).json({
+        EC: 0,
+        EM: "Id là bắt buộc",
+      });
+    }
     const response = await OrderService.cancelOrderProduct(id, data);
     return res.status(200).json(response);
   } catch (error) {
