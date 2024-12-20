@@ -1,4 +1,4 @@
-FROM node:16
+FROM node:18
 
 WORKDIR /app
 
@@ -12,5 +12,15 @@ EXPOSE 8080
 
 CMD ["npm", "start"]
 
+# docker build -t backend-ecomerce-oss-final-v1 .
+# docker login
+# docker build -t minhduyyy/backend-ecomerce-oss-final-v1:tag .
+# docker images
+# docker push minhduyyy/backend-ecomerce-oss-final-v1:tag
 
-#  docker run -p 8080:8080 my-node-app     
+# docker pull minhduyyy/backend-ecomerce-oss-final-v1:tag
+
+# docker run -p 8080:8080 minhduyyy/backend-ecomerce-oss-final-v1:tag
+
+
+
