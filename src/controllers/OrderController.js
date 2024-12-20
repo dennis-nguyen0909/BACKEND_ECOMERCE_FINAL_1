@@ -128,7 +128,7 @@ const getDetailOrder = async (req, res) => {
     if (!id) {
       return res.status(200).json({
         EC: 0,
-        EM: "ERR",
+        EM: "ID là bắt buộc",
       });
     }
     const response = await OrderService.getDetailOrder(id);
