@@ -151,25 +151,16 @@ const deleteManyProduct = async (req, res) => {
     });
   }
 };
-const deleteManyProduct = (ids) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      await Product.deleteMany({
-        _id: { $in: ids },
-      });
-      resolve({
-        status: "Ok",
-        EC: 1,
-        Message: "Delete Success",
-      });
-    } catch (error) {
-      resolve({
-        status: "Error",
-        EC: 0,
-        Message: "Delete Error",
-      });
-    }
-  });
+const getAllTypeProduct = async (req, res) => {
+  try {
+    const response = await ProductService.getAllTypeProduct();
+    return res.status(200).json(response);
+  } catch (error) {
+    return res.status(404).json({
+      message: "Error from services!!",
+      status: "err",
+    });
+  }
 };
 module.exports = {
   createProduct,
@@ -179,4 +170,5 @@ module.exports = {
   getAllProduct,
   getAllProduct2,
   deleteManyProduct,
+  getAllTypeProduct,
 };
