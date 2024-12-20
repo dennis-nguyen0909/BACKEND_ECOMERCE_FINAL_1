@@ -19,5 +19,21 @@ const createProduct = (keyword) => {
     }
   });
 };
+const getAllSearch = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const searchHistory = await Search.find().sort({ timestamp: -1 });
 
-module.exports = { createProduct };
+      if (searchHistory) {
+        resolve({
+          status: "Ok",
+          message: "Find Search Ok!!",
+          searchHistory,
+        });
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+module.exports = { createProduct, getAllSearch };
