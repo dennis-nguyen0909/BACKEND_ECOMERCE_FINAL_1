@@ -4,6 +4,11 @@ const ShopService = require("../services/ShopService");
 const createNameShop = async (req, res) => {
   try {
     const { name } = req.body;
+    if (!name || name === "") {
+      return res.status(500).json({
+        EM: "Name không được trống!",
+      });
+    }
     console.log("name", name);
     const response = await ShopService.createNameShop(name);
     return res.status(200).json({ response });
@@ -29,6 +34,11 @@ const getAllShop = async (req, res) => {
 const getShopById = async (req, res) => {
   try {
     const id = req.params.id;
+    if (id === "" || !id) {
+      return res.status(500).json({
+        EM: "Id không được bỏ trống",
+      });
+    }
     const response = await ShopService.getShopById(id);
     return res.status(200).json({ response });
   } catch (e) {
