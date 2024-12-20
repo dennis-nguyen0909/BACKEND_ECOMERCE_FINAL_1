@@ -16,6 +16,7 @@ const ProductRouter = (app) => {
     ProductController.deleteManyProduct
   );
   router.get("/get-all-type", ProductController.getAllTypeProduct);
+  router.get("/get-all-discount", ProductController.getAllDiscount);
   return app.use("/api/product", router);
 };
 
